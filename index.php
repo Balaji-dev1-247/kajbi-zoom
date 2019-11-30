@@ -1,7 +1,9 @@
 <?php 
 	session_start();
-	/*unset($_SESSION["auth_code"]);
-	unset($_SESSION["token"]);*/
+	include("api/constants.php");
+	$clientId = APP_KEY;
+	$redirectUrl = REDIRECT_URL;
+	$sysUrl = URL;
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,7 +61,7 @@
 		      	</div>
 		    </div>
 		</div>
-  		<?php if(isset($_GET['code'])){?>
+
 		  	<form role="form" action="" method="post">
 			    <div class="row setup-content" id="step-1">
 			      	<div class="col-xs-6 col-md-offset-3">
@@ -220,8 +222,16 @@
 					</div>
 			    </div>
 		  </form>
-  		<?php } ?>
+  	
 </div>
+
+<script>
+    var mySession = '<?php echo $_SESSION['token'] ?>';
+    var clientId = '<?php echo $clientId ?>';
+    var redirectUrl = '<?php echo $redirectUrl ?>';
+    var proUrl = '<?php echo $sysUrl?>';
+</script>
+
 </body>
 </html>
 

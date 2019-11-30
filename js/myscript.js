@@ -1,16 +1,11 @@
 
-https://zoom.us/oauth/authorize?response_type=code&client_id=qW8P5KYhTaWc5UgqN0EQFQ&redirect_uri=http://local.ytel.com/kajabi-zoom/
-
-
 
 $(document).ready(function () {
    
-
-
-
-
     var email = '',fname = '',lname = '',phoneNumber = '',address='',country='',state='',city='',zipcode='';
-
+    
+    redirecPage();
+    
     $('#main-error').hide()
     $('#datetimepicker1').datetimepicker({
         format: 'DD/MM/YYYY',
@@ -25,8 +20,7 @@ $(document).ready(function () {
 
 
     var navListItems = $('div.setup-panel div a'),allWells = $('.setup-content'),allNextBtn = $('.nextBtn');
-
-    //$('#datetimepicker1').datetimepicker();
+    
     getAllMettingDetails();
 
     allWells.hide();
@@ -51,8 +45,6 @@ $(document).ready(function () {
 
         var d = this.getAttribute("data-id");
         var datetime = this.getAttribute("data-date");
-
-        //getWebinarDetails(d);
 
         localStorage.setItem("timeId",d);
         localStorage.setItem("datetime",datetime);
@@ -110,12 +102,19 @@ $(document).ready(function () {
             if(json.status == 409){
                $('#alert-failed').text(json.msg);
                $('#alert-failed').show();
+
+               $("#alert-failed").fadeTo(2000, 1000).slideUp(1000, function(){$("#alert-failed").slideUp(1000);});
+
             }
 
             if(json.status == 200){
                $('#alert-success').text(json.msg);
                $('#alert-success').show();
+               $("#alert-success").fadeTo(2000, 1000).slideUp(1000, function(){$("#alert-success").slideUp(1000);});
             }
+
+            
+
          }
       });
    })
@@ -163,11 +162,7 @@ $(document).ready(function () {
           $('#tbl-zipcode').text($('#zipcode').val());
           $('#tbl-phone').text($('#phoneNumber').val());
           $('#display-time').text(localStorage.getItem('datetime'))
-
       }
-      
-
-
       if (isValid)nextStepWizard.removeAttr('disabled').trigger('click');
    });
 
@@ -188,7 +183,7 @@ function getAllMettingDetails(){
       success: function(json) {
          
          (json.hasOwnProperty("code") && json.code == 124 )? 
-            ($('#main-error').show(),$('#main-error').text('Your session has been expired please start new one !!!'))
+            (redirecPage(),$('#main-error').show(),$('#main-error').text('Your session has been expired please start new one (Refresh) !!!'))
             : 
             ($('#main-error').hide());
         
@@ -215,23 +210,28 @@ function getWebinarDetails(id){
         $('#time-details').html("");
         var timeHtml="";
         if(json.hasOwnProperty("occurrences")){ 
+
           $.each(json.occurrences, function(k, v) {
             var d = new Date(v.start_time);
             var datetime = d.toLocaleString();
             timeHtml +='<div class="col-sm-2 timediv timeSelectBtn" data-id="'+v.occurrence_id+'" data-date="'+datetime+'">'+datetime+'</div>';
-
           });
           $('#time-details').append(timeHtml);        
+
         }else{
+
             var d1 = new Date(json.start_time);
             var datetime = d1.toLocaleString();
             $('#time-details').append(`<div class="col-sm-2 timediv timeSelectBtn" data-id="" data-date="`+datetime+`">`+datetime+`</div>`);
-        }
 
+        }
           
       }
    });
 }
 
-
-
+function redirecPage() {
+  if(mySession == ""){
+      window.location.href = proUrl+'?response_type=code&client_id='+clientId+'&redirect_uri='+redirectUrl;
+  }
+}

@@ -8,7 +8,7 @@
 
 	if (mysqli_num_rows($result) > 0) {
 	    $data['status'] = 409;
-		$data['msg'] = "Meeting already exist for this email";
+		$data['msg'] = "Webinar registration already exists for this email";
 	    echo json_encode($data);
 
 	} else {
@@ -20,7 +20,7 @@
 	
 			$data['status'] = 200;
 			$data['zoom_response'] = $zoom_response;
-			$data['msg'] = "Meeting save successfully";
+			$data['msg'] = "Webinar registration successfully";
 		    echo json_encode($data);
 
 		} else {
@@ -38,7 +38,6 @@
 	function registerUser($post)
 	{
 	  
-	    $authentication = base64_encode("qW8P5KYhTaWc5UgqN0EQFQ:Y21Z76rdMe77RXxymNGEr2OuiMUpcuGW");
 	    $authCode = $_SESSION['auth_code'];
 	   	$webinarId = $post['webinar_id'];
 	   	$occurrence_ids = $post['occurrence_ids'];

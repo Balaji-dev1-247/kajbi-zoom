@@ -29,14 +29,15 @@
         ));
         $response = curl_exec($curl);
         
-        if (isset(json_decode($data)->code)) {
+        if (isset(json_decode($response)->code)) {
             unset($_SESSION["token"]);
+            session_destroy();
         }
 
         $err = curl_error($curl);
         curl_close($curl);
         if ($err) {
-            session_destroy();
+            
             echo "cURL Error #:" . $err;
         } else {
             echo $response;
