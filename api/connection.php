@@ -1,8 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "xoyal";
-$password = "xoyal";
-$database = "db_crm";
+include("constants.php");
+
+$servername = SERVER_NAME;
+$username =  USER_NAME;
+$password = PASSWORD;
+$database = DATABASE;
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password,$database);

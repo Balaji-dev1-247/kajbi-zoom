@@ -55,3 +55,28 @@ body {
     border: 1px solid rgba(34, 36, 38, 0.15);
 
 }
+
+.time-list{
+    width: 92px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.time-head{
+    margin-bottom: 4px;
+    background: #eaeaea;
+    font-size: 12px;
+    font-weight : bold;
+}
+.time-details{
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+ul li:hover {
+    border: 1px solid #81a3e4;
+    overflow: hidden;        
+}
+
+.user-dp{
+    width: 50px;
+}
