@@ -26,48 +26,49 @@
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 
 </head>
 
 <body>
 
 	<?php $_SESSION["auth_code"] = $_GET['code'];?>
+
+
 	<div class="container">
-		<div class="col-md-12" style="text-align: center;padding: 18px;">
-			<img src="https://ucarecdn.com/8d399f9f-06ba-4a72-8c20-f8c23616008b/-/stretch/off/-/resize/x100/" />
-		</div>
-		<div class="stepwizard col-md-offset-3">
-			<div class="stepwizard-row setup-panel">
-				<div class="stepwizard-step">
-					<a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-					<p>Mentors</p>
+ 
+		<div class="row" style="padding-bottom: 80px;box-shadow: 3px 3px 5px 6px #ccc;">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div class="col-md-12" style="text-align: center;padding: 18px;">
+					<img src="https://ucarecdn.com/8d399f9f-06ba-4a72-8c20-f8c23616008b/-/stretch/off/-/resize/x100/" />
 				</div>
-
-				<div class="stepwizard-step">
-					<a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-					<p>Time</p>
+				<div class="col-md-12" style="text-align: center;padding: 18px;">
+					<div class="stepwizard" style="width:100%">
+						<div class="stepwizard-row setup-panel">
+							<div class="stepwizard-step">
+								<a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+								<p>Mentors</p>
+							</div>
+							<div class="stepwizard-step">
+								<a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+								<p>Time</p>
+							</div>
+							<div class="stepwizard-step">
+								<a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+								<p>Information</p>
+							</div>
+							<div class="stepwizard-step">
+								<a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+								<p>Review</p>
+							</div>
+						</div>
+					</div>
 				</div>
-
-				<div class="stepwizard-step">
-					<a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-					<p>Information</p>
-				</div>
-				<div class="stepwizard-step">
-					<a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-					<p>Review</p>
-				</div>
-			</div>
-		</div>
-
-		<form role="form" action="" method="post">
-			<div class="row setup-content" id="step-1">
-				<div class="col-xs-6 col-md-offset-3">
-					<div class="col-md-12">
-						<h4 style="text-align: center;"> <b>Select Mentor</b></h4>
+				<div class="col-md-12">
+					<div class="setup-content" id="step-1">
+						<h4 style="text-align: center;"> <b>SELECT MENTOR</b></h4>
 						<br />
 						<div class="alert alert-danger" id="main-error" style="display: none;"></div>
 						<div class="alert alert-danger" id="main-nodata" style="display: none;">No Webinar Available
@@ -75,92 +76,71 @@
 						<ul class="list-group" id="meet-list"></ul>
 					</div>
 				</div>
-			</div>
 
-
-			<div class="row setup-content" id="step-2">
-				<div class="col-xs-9 col-md-offset-3">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-9" style="padding-left:0px;">
-								<h4> <b>Pick date & time</b></h4>
-								<div class="form-group">
-							        <div class='input-group date' id='datetimepicker1'>
-							        	<input type='text' class="form-control" id="myDate" />
-							          	<span class="input-group-addon">
-							            	<span class="glyphicon glyphicon-calendar"></span>
-							          	</span>
-							        </div>
-							    </div>
-						    </div>
+				<div class="col-md-12" style="text-align: center;">
+					<div class="row setup-content" id="step-2">
+						<h4> <b>PICK DATE & TIME</b></h4>
+						<div class="form-group" style="padding: 0% 5% 0% 5%;">
+					        <div class='input-group date' id='datetimepicker1'>
+					        	<input type='text' class="form-control" id="myDate" />
+					          	<span class="input-group-addon">
+					            	<span class="glyphicon glyphicon-calendar"></span>
+					          	</span>
+					        </div>
 					    </div>
-					    <div class="row" id="my-date-time"></div>
+					    <div class="" id="my-date-time"></div>
 					</div>
 				</div>
-			</div>
 
-
-
-			<div class="row setup-content" id="step-3">
-				<div class="col-xs-6 col-md-offset-3">
-					<div class="col-md-12">
+				<div class="col-md-12">
+					<div class="setup-content" id="step-3">
 						<h4><b>PROVIDE YOUR INFORMATION</b></h4>
 						<div class="form-group">
-							<label class="control-label">Email *</label>
+							<label class="control-label">Email <span style="color: red;">*</span></label>
 							<input maxlength="100" type="text" required="required" class="form-control" name="email"
 								id="email" />
 						</div>
-
 						<div class="form-group">
-							<label class="control-label">First Name *</label>
+							<label class="control-label">First Name <span style="color: red;">*</span></label>
 							<input maxlength="100" type="text" required="required" class="form-control" name="fname"
 								id="fname" />
 						</div>
-
 						<div class="form-group">
-							<label class="control-label">Last Name *</label>
+							<label class="control-label">Last Name <span style="color: red;">*</span></label>
 							<input maxlength="100" type="text" required="required" class="form-control" name="lname"
 								id="lname" />
 						</div>
-
 						<div class="form-group">
 							<label class="control-label">Address</label>
 							<textarea class="form-control" id="address" name="address"></textarea>
 						</div>
-
 						<div class="form-group">
 							<label class="control-label">Country </label>
 							<input maxlength="100" type="text" class="form-control" name="country" id="country" />
 						</div>
-
 						<div class="form-group">
 							<label class="control-label">State </label>
 							<input maxlength="100" type="text" class="form-control" name="state" id="state" />
 						</div>
-
 						<div class="form-group">
 							<label class="control-label">City </label>
 							<input maxlength="100" type="text" class="form-control" name="city" id="city" />
 						</div>
-
 						<div class="form-group">
 							<label class="control-label">Zipcode </label>
 							<input maxlength="100" type="text" class="form-control" name="zipcode" id="zipcode" />
 						</div>
-
 						<div class="form-group">
 							<label class="control-label">Phone </label>
 							<input maxlength="100" type="text" class="form-control" name="phone" id="phone" />
 						</div>
 
-						<button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+						<button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
 					</div>
 				</div>
-			</div>
-			<div class="row setup-content" id="step-4">
-				<div class="col-xs-6 col-md-offset-3">
-					<div class="col-md-12">
 
+				<div class="col-md-12">
+					<div class="setup-content" id="step-4">
 						<h4>TIME</h4>
 						<div class="panel panel-default">
 							<div class="panel-body">
@@ -168,13 +148,7 @@
 
 							</div>
 						</div>
-						<!-- <h4>MEETING TYPE</h4>
-							<div class="panel panel-default">
-							  <div class="panel-body">
-							  	<span id="display-"></span>
-							  </div>
-							</div> -->
-
+						
 						<h4> YOUR INFORMATION</h4>
 						<div class="alert alert-success" id="alert-success" style="display: none;"></div>
 						<div class="alert alert-danger" id="alert-failed" style="display: none;"></div>
@@ -219,14 +193,13 @@
 
 							</tbody>
 						</table>
-
 						<button class="btn btn-success btn-block pull-right submitBtn" type="button">Complete
 							Booking</button>
 					</div>
 				</div>
 			</div>
-		</form>
-
+			<div class="col-sm-2"></div>
+		</div>
 	</div>
 
 	<script>
